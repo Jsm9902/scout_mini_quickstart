@@ -12,18 +12,27 @@ trap 'echo "[ERROR] Installation stopped at line $LINENO. See: $LOG_FILE" >&2' E
 
 if [[ ! -f "$CONFIG_FILE" ]]; then
   cp "$ROOT_DIR/config/quickstart.env.example" "$CONFIG_FILE"
-  echo "[INFO] Created $CONFIG_FILE"
+  echo "[INFO] Created $CONFIG_FILE from the example configuration."
 fi
+
 # shellcheck disable=SC1090
 source "$CONFIG_FILE"
 
-if [[ "${1:-}" == "--full" ]]; then
-  export INSTALL_FULL_FEATURES=1
-fi
+required_vars=(
+  ROS_DISTRO WORKSPACE_DIR SOURCE_REPO SOURCE_BRANCH
+  CAN_INTERFACE CAN_BITRATE WEB_SERVER_PORT ROSBRIDGE_PORT VIDEO_SERVER_PORT
+  BACKUP_EXISTING_SRC
+)
+for name in "${required_vars[@]}"; do
+  if [[ -z "${!name:-}" ]]; then
+    echo "[ERROR] Missing configuration value: $name" >&2
+    exit 1
+  fi
+done
 
 export ROOT_DIR CONFIG_FILE ROS_DISTRO WORKSPACE_DIR SOURCE_REPO SOURCE_BRANCH
 export CAN_INTERFACE CAN_BITRATE WEB_SERVER_PORT ROSBRIDGE_PORT VIDEO_SERVER_PORT
-export INSTALL_FULL_FEATURES
+export BACKUP_EXISTING_SRC
 
 steps=(
   01_check_system.sh
@@ -47,4 +56,5 @@ done
 echo
 echo "[SUCCESS] Scout Mini environment installation completed."
 echo "[INFO] Restart the terminal or run: source $WORKSPACE_DIR/install/setup.bash"
+echo "[INFO] Operator commands: start_slam, start_navigation, start_web_slam, start_web_navigation, check_robot, stop_robot"
 echo "[INFO] Installation log: $LOG_FILE"
