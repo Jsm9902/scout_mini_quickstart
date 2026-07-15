@@ -1,0 +1,4 @@
+config/quickstart.env
+logs/*.log
+.DS_Store
+*.swp
