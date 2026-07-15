@@ -1,21 +1,25 @@
-# Troubleshooting
+# 문제 해결
 
-## CAN interface is missing
-
+## CAN이 없음
 ```bash
-ip link show
-sudo systemctl status scout-can.service
+ip link
+systemctl status scout-can.service
+sudo systemctl restart scout-can.service
 ```
+USB-CAN 장치명이 `can0`이 아니라면 `config/quickstart.env`의 `CAN_INTERFACE`를 수정하고 `./quickstart.sh --force`를 실행합니다.
 
-## Workspace does not build
-
+## 빌드 실패
 ```bash
 cd ~/scout_ws
-source /opt/ros/humble/setup.bash
-rosdep install --from-paths src --ignore-src -r -y
-colcon build --symlink-install --event-handlers console_direct+
+rosdep install --from-paths src --ignore-src -r -y --rosdistro humble
+colcon build --symlink-install --executor sequential --event-handlers console_direct+
 ```
 
-## Web UI cannot connect
+## LiDAR 데이터 없음
+PC와 VLP-16의 IP 대역, 방화벽, 센서 IP 설정과 기존 launch/yaml의 device IP를 확인합니다.
 
-Check that ports 8000, 8080 and 9090 are reachable only from the trusted LAN and that ROSBridge and the video server are running.
+## Web 접속 불가
+```bash
+ss -lntp | grep -E '8000|8080|9090'
+ros2 node list | grep -E 'rosbridge|web_video'
+```

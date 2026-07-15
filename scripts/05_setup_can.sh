@@ -1,34 +1,14 @@
 #!/usr/bin/env bash
 set -Eeuo pipefail
-
-IP_BIN="$(command -v ip)"
-service_file="/etc/systemd/system/scout-can.service"
-
-sudo tee "$service_file" >/dev/null <<SERVICE
-[Unit]
-Description=Configure Scout Mini CAN interface
-After=network-pre.target
-Before=network.target
-
-[Service]
-Type=oneshot
-RemainAfterExit=yes
-ExecStart=${IP_BIN} link set ${CAN_INTERFACE} down
-ExecStart=${IP_BIN} link set ${CAN_INTERFACE} type can bitrate ${CAN_BITRATE}
-ExecStart=${IP_BIN} link set ${CAN_INTERFACE} up
-ExecStop=${IP_BIN} link set ${CAN_INTERFACE} down
-
-[Install]
-WantedBy=multi-user.target
-SERVICE
-
+if [[ "$ENABLE_CAN_SERVICE" != 1 ]]; then echo "[SKIP] CAN service disabled."; exit 0; fi
+sudo install -m 0755 "$ROOT_DIR/systemd/scout-can-setup" /usr/local/sbin/scout-can-setup
+sudo sed -e "s/@CAN_INTERFACE@/$CAN_INTERFACE/g" -e "s/@CAN_BITRATE@/$CAN_BITRATE/g" "$ROOT_DIR/systemd/scout-can.service.in" | sudo tee /etc/systemd/system/scout-can.service >/dev/null
 sudo systemctl daemon-reload
 sudo systemctl enable scout-can.service
-
 if ip link show "$CAN_INTERFACE" >/dev/null 2>&1; then
   sudo systemctl restart scout-can.service
-  echo "[OK] CAN interface configured: $CAN_INTERFACE @ $CAN_BITRATE bit/s"
+  systemctl --no-pager --full status scout-can.service || true
 else
-  echo "[WARN] CAN interface '$CAN_INTERFACE' is not currently present."
-  echo "       The systemd service was installed, but it can only start after the CAN adapter is detected."
+  echo "[WARN] $CAN_INTERFACE not detected now. Service will retry during boot after adapter connection."
 fi
+echo "[OK] CAN boot service installed."

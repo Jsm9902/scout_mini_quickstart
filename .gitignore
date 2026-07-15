@@ -1,4 +1,5 @@
 config/quickstart.env
-logs/*.log
-.DS_Store
-*.swp
+logs/*
+!logs/.gitkeep
+.state/*
+!.state/.gitkeep

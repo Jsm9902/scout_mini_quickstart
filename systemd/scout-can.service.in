@@ -1,0 +1,13 @@
+[Unit]
+Description=Scout Mini CAN interface
+After=systemd-udev-settle.service
+Wants=systemd-udev-settle.service
+
+[Service]
+Type=oneshot
+RemainAfterExit=yes
+ExecStart=/usr/local/sbin/scout-can-setup @CAN_INTERFACE@ @CAN_BITRATE@
+ExecStop=/usr/sbin/ip link set @CAN_INTERFACE@ down
+
+[Install]
+WantedBy=multi-user.target
