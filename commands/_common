@@ -1,0 +1,8 @@
+#!/usr/bin/env bash
+set -Eeuo pipefail
+ENV_FILE="$HOME/.config/scout_mini_quickstart/ros_env.sh"
+[[ -f "$ENV_FILE" ]] || { echo "[ERROR] Missing $ENV_FILE"; exit 1; }
+_had_u=0; case "$-" in *u*) _had_u=1; set +u;; esac
+source "$ENV_FILE"
+[[ $_had_u -eq 1 ]] && set -u
+unset _had_u

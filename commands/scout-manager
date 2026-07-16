@@ -1,0 +1,22 @@
+#!/usr/bin/env bash
+set -Eeuo pipefail
+while true; do
+cat <<MENU
+==============================
+ Scout Mini Manager
+==============================
+1. Build
+2. Start Base
+3. Start SLAM
+4. Start Navigation
+5. Start Web SLAM
+6. Start Web Navigation
+7. Check Robot
+8. Check CAN
+9. Stop ROS
+0. Exit
+MENU
+read -rp "Select: " n
+case "$n" in
+1) scout-build;; 2) scout-start-base;; 3) scout-start-slam;; 4) scout-start-navigation;; 5) scout-start-web-slam;; 6) scout-start-web-navigation;; 7) scout-check;; 8) scout-can-check;; 9) scout-stop;; 0) exit 0;; *) echo "Invalid selection";; esac
+done

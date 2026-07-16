@@ -1,0 +1,5 @@
+#!/usr/bin/env bash
+set -Eeuo pipefail
+pkill -INT -f 'ros2 launch' 2>/dev/null || true
+sleep 2
+pkill -TERM -f 'ros2 launch' 2>/dev/null || true

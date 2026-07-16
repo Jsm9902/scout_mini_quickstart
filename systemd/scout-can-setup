@@ -1,9 +1,0 @@
-#!/usr/bin/env bash
-set -Eeuo pipefail
-iface="$1"; bitrate="$2"
-for _ in {1..20}; do ip link show "$iface" >/dev/null 2>&1 && break; sleep 1; done
-ip link show "$iface" >/dev/null 2>&1 || { echo "CAN interface not found: $iface"; exit 1; }
-ip link set "$iface" down || true
-ip link set "$iface" type can bitrate "$bitrate" restart-ms 100
-ip link set "$iface" txqueuelen 1000
-ip link set "$iface" up

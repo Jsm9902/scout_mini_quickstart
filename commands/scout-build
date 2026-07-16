@@ -1,0 +1,6 @@
+#!/usr/bin/env bash
+set -Eeuo pipefail
+source "$(dirname "$0")/_common"
+cd "$HOME/scout_ws"
+rm -rf build log
+colcon build --symlink-install

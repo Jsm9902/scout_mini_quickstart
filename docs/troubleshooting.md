@@ -1,25 +1,13 @@
-# 문제 해결
+# Troubleshooting
 
-## CAN이 없음
-```bash
-ip link
-systemctl status scout-can.service
-sudo systemctl restart scout-can.service
-```
-USB-CAN 장치명이 `can0`이 아니라면 `config/quickstart.env`의 `CAN_INTERFACE`를 수정하고 `./quickstart.sh --force`를 실행합니다.
+## AMENT_TRACE_SETUP_FILES: unbound variable
+본 설치기는 ROS setup source 중 `set -u`를 임시 해제합니다. 직접 스크립트를 수정했다면 같은 안전 source 함수를 사용하세요.
+
+## CAN 장치 없음
+`ip link`와 `lsusb`를 확인하고 USB-to-CAN 드라이버 및 장치명을 확인하세요.
 
 ## 빌드 실패
-```bash
-cd ~/scout_ws
-rosdep install --from-paths src --ignore-src -r -y --rosdistro humble
-colcon build --symlink-install --executor sequential --event-handlers console_direct+
-```
+설치 로그를 확인하고 `./install.sh --resume`을 실행하세요.
 
-## LiDAR 데이터 없음
-PC와 VLP-16의 IP 대역, 방화벽, 센서 IP 설정과 기존 launch/yaml의 device IP를 확인합니다.
-
-## Web 접속 불가
-```bash
-ss -lntp | grep -E '8000|8080|9090'
-ros2 node list | grep -E 'rosbridge|web_video'
-```
+## Web 접속 실패
+9090, 8080, 8000 포트와 방화벽, ROSBridge 및 Video Server 실행 상태를 확인하세요.

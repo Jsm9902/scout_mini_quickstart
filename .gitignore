@@ -1,5 +1,0 @@
-config/quickstart.env
-logs/*
-!logs/.gitkeep
-.state/*
-!.state/.gitkeep

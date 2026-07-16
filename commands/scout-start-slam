@@ -1,0 +1,4 @@
+#!/usr/bin/env bash
+set -Eeuo pipefail
+source "$(dirname "$0")/_common"
+ros2 launch scout_slam scout_slam_integrated.launch.py

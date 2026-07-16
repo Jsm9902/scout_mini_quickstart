@@ -1,0 +1,5 @@
+#!/usr/bin/env bash
+set -Eeuo pipefail
+iface="${CAN_INTERFACE:-can0}"
+ip -details link show "$iface" || true
+if command -v candump >/dev/null 2>&1; then timeout 5 candump "$iface" || true; fi

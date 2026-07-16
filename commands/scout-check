@@ -1,0 +1,7 @@
+#!/usr/bin/env bash
+set -Eeuo pipefail
+source "$(dirname "$0")/_common"
+echo "=== Packages ==="
+for p in scout_base scout_navigation scout_slam scout_web_monitor; do ros2 pkg prefix "$p" >/dev/null 2>&1 && echo "[OK] $p" || echo "[FAIL] $p"; done
+echo "=== Topics ==="
+for t in /tf /odom /scan /map /amcl_pose /cmd_vel; do timeout 4 ros2 topic echo "$t" --once >/dev/null 2>&1 && echo "[OK] $t" || echo "[WAIT] $t"; done
