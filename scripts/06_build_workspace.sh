@@ -1,4 +1,3 @@
-cat > scripts/06_build_workspace.sh <<'EOF'
 #!/usr/bin/env bash
 set -Eeuo pipefail
 
