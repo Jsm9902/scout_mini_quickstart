@@ -53,7 +53,10 @@ if [[ ! -f "$CONFIG_FILE" ]]; then
 fi
 
 # shellcheck disable=SC1090
+set -a
 source "$CONFIG_FILE"
+set +a
+
 export RESUME FORCE VERIFY_ONLY DEVELOPER_TOOLS
 export CONFIG_FILE
 

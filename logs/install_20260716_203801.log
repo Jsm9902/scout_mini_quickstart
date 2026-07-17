@@ -1,0 +1,10 @@
+[INFO] Log: /home/jsm/scout_mini_quickstart/logs/install_20260716_203801.log
+
+===================================================
+[STEP] 00_preflight
+===================================================
+[INFO] Supported architecture detected: aarch64
+[INFO] Jetson / ARM64 environment detected.
+/home/jsm/scout_mini_quickstart/steps/00_preflight.sh: line 56: MIN_DISK_GB: unbound variable
+[ERROR] Installation stopped (exit=1, line=20)
+[INFO] Fix the cause and rerun ./install.sh --resume

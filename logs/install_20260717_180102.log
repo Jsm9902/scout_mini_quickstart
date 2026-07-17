@@ -1,0 +1,74 @@
+[INFO] Log: /home/jsm/scout_mini_quickstart/logs/install_20260717_180102.log
+
+===================================================
+[STEP] 00_preflight
+===================================================
+[SKIP] Already completed: 00_preflight
+
+===================================================
+[STEP] 01_system_packages
+===================================================
+[SKIP] Already completed: 01_system_packages
+
+===================================================
+[STEP] 02_ros2_humble
+===================================================
+[SKIP] Already completed: 02_ros2_humble
+
+===================================================
+[STEP] 03_ros_dependencies
+===================================================
+[SKIP] Already completed: 03_ros_dependencies
+
+===================================================
+[STEP] 04_workspace
+===================================================
+[SKIP] Already completed: 04_workspace
+
+===================================================
+[STEP] 05_can
+===================================================
+[SKIP] Already completed: 05_can
+
+===================================================
+[STEP] 06_build
+===================================================
+[SKIP] Already completed: 06_build
+
+===================================================
+[STEP] 07_static_verify
+===================================================
+[OK] package scout_base
+[OK] package scout_msgs
+[OK] package scout_description
+[OK] package scout_navigation
+[OK] package scout_slam
+[OK] package scout_web_monitor
+[OK] package slam_toolbox
+[OK] package nav2_bringup
+[OK] package velodyne_driver
+[OK] package velodyne_pointcloud
+[OK] package pointcloud_to_laserscan
+[OK] package rosbridge_server
+[OK] package web_video_server
+[OK] launch scout_slam/scout_slam_integrated.launch.py
+[OK] launch scout_navigation/scout_industrial_safety_integrated.launch.py
+[OK] launch scout_web_monitor/web_nav.launch.py
+[OK] launch scout_web_monitor/web_slam.launch.py
+[OK] YAML parse
+[OK] Static verification passed.
+
+===================================================
+[STEP] 08_install_commands
+===================================================
+[OK] Operational commands installed.
+
+===================================================
+[STEP] 09_hardware_verify
+===================================================
+[INFO] CAN can0 state: up
+[INFO] Software installation is ready. Live topics require powered hardware and launched drivers.
+[OK] Hardware readiness check completed.
+[OK] Scout Mini Quickstart installation completed.
+[INFO] Open a new terminal or run: source ~/.config/scout_mini_quickstart/ros_env.sh
+[INFO] Then start with: scout-manager

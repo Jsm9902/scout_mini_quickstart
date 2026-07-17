@@ -1,0 +1,43 @@
+[INFO] Log: /home/jsm/scout_mini_quickstart/logs/install_20260716_204424.log
+
+===================================================
+[STEP] 00_preflight
+===================================================
+[INFO] Supported architecture detected: aarch64
+[INFO] Jetson / ARM64 environment detected.
+[OK] Preflight checks passed.
+
+===================================================
+[STEP] 01_system_packages
+===================================================
+Get:1 file:/var/cudnn-local-tegra-repo-ubuntu2204-9.3.0  InRelease [1,572 B]
+Get:2 file:/var/l4t-cuda-tegra-repo-ubuntu2204-12-6-local  InRelease [1,572 B]
+Get:1 file:/var/cudnn-local-tegra-repo-ubuntu2204-9.3.0  InRelease [1,572 B]
+Get:3 file:/var/nv-tensorrt-local-tegra-repo-ubuntu2204-10.3.0-cuda-12.5  InRelease [1,572 B]
+Get:2 file:/var/l4t-cuda-tegra-repo-ubuntu2204-12-6-local  InRelease [1,572 B]
+Get:3 file:/var/nv-tensorrt-local-tegra-repo-ubuntu2204-10.3.0-cuda-12.5  InRelease [1,572 B]
+Hit:4 https://download.docker.com/linux/ubuntu jammy InRelease
+Hit:5 https://repo.download.nvidia.com/jetson/common r36.4 InRelease
+Hit:6 http://ports.ubuntu.com/ubuntu-ports jammy InRelease
+Hit:7 https://repo.download.nvidia.com/jetson/t234 r36.4 InRelease
+Hit:8 http://ports.ubuntu.com/ubuntu-ports jammy-updates InRelease
+Hit:9 https://repo.download.nvidia.com/jetson/ffmpeg r36.4 InRelease
+Hit:10 http://ports.ubuntu.com/ubuntu-ports jammy-backports InRelease
+Hit:11 http://ports.ubuntu.com/ubuntu-ports jammy-security InRelease
+Reading package lists...
+Reading package lists...
+Building dependency tree...
+Reading state information...
+Calculating upgrade...
+The following packages were automatically installed and are no longer required:
+  libfwupdplugin5 libgcab-1.0-0 libslirp0 slirp4netns
+Use 'sudo apt autoremove' to remove them.
+0 upgraded, 0 newly installed, 0 to remove and 0 not upgraded.
+Reading package lists...
+Building dependency tree...
+Reading state information...
+E: Unable to locate package python3-rosdep
+E: Unable to locate package python3-vcstool
+E: Unable to locate package python3-colcon-common-extensions
+[ERROR] Installation stopped (exit=100, line=20)
+[INFO] Fix the cause and rerun ./install.sh --resume
