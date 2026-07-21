@@ -1,0 +1,54 @@
+[INFO] Log: /home/jsm/scout_mini_quickstart/logs/install_20260721_174222.log
+
+===================================================
+[STEP] 07_static_verify
+===================================================
+[OK] package scout_base
+[OK] package scout_msgs
+[OK] package scout_description
+[OK] package scout_navigation
+[OK] package scout_slam
+[OK] package scout_web_monitor
+[OK] package slam_toolbox
+[OK] package nav2_bringup
+[OK] package velodyne_driver
+[OK] package velodyne_pointcloud
+[OK] package pointcloud_to_laserscan
+[OK] package rosbridge_server
+[OK] package web_video_server
+[OK] launch scout_slam/scout_slam_integrated.launch.py
+[OK] launch scout_navigation/scout_industrial_safety_integrated.launch.py
+[OK] launch scout_web_monitor/web_nav.launch.py
+[OK] launch scout_web_monitor/web_slam.launch.py
+[OK] YAML parse
+[OK] Static verification passed.
+
+===================================================
+[STEP] 09_hardware_verify
+===================================================
+[INFO] CAN can0 state: up
+[INFO] CAN can0 driver: gs_usb
+[OK] CAN bitrate verified: 500000
+[OK] Jetson USB-CAN naming verified: can0 -> gs_usb
+[OK] Jetson internal CAN found: can_internal (mttcan)
+[OK] scout-can.service enabled
+[OK] scout-can.service active
+[OK] Workspace setup found.
+[OK] ROS package ready: scout_base
+[OK] ROS package ready: scout_navigation
+[OK] ROS package ready: scout_slam
+[OK] ROS package ready: scout_web_monitor
+[OK] ROS package ready: velodyne
+[OK] ROS package ready: velodyne_pointcloud
+[OK] ROS package ready: velodyne_laserscan
+[OK] ROS package ready: rosbridge_server
+[OK] ROS package ready: web_video_server
+[OK] Command installed: scout-start-base
+[OK] Command installed: scout-start-slam
+[OK] Command installed: scout-start-navigation
+[OK] Command installed: scout-start-web-slam
+[OK] Command installed: scout-start-web-navigation
+[OK] Command installed: scout-check
+[OK] Command installed: scout-can-check
+[INFO] Live topics and nodes require powered hardware and launched drivers.
+[OK] Hardware readiness check completed.

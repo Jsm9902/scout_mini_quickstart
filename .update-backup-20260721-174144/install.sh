@@ -77,9 +77,7 @@ STEPS=(
   04_workspace.sh
   05_can.sh
   06_build.sh
-  
-07_jetson.sh
-07_static_verify.sh
+  07_static_verify.sh
   08_install_commands.sh
   09_hardware_verify.sh
 )

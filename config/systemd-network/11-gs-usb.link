@@ -1,0 +1,6 @@
+[Match]
+Driver=gs_usb
+
+[Link]
+NamePolicy=
+Name=can0

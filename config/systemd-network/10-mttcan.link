@@ -1,0 +1,6 @@
+[Match]
+Driver=mttcan
+
+[Link]
+NamePolicy=
+Name=can_internal
